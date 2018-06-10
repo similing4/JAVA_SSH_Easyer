@@ -1,5 +1,13 @@
 # JAVA_SSH_Easyer
 SSH框架的部分简单封装，操作更简易方便
+# 安装方法
+正常建立一个javaweb项目后，添加Hibernate到项目中。逆向生成中只选中DataObject，后面内容根据自己的数据库设置即可（我用的mysql，id generator选identity）。添加BaseAction.java到你的Action包中，你的Action继承自此action并重写check方法。将com.pingjia.tools包加入你的项目中。将WebRoot下Public文件夹下的error.jsp与success.jsp加入你的项目中。xml中每个package加入下方代码就可以了。
+```
+<global-results>
+	<result name="input">/Public/success.jsp</result>
+	<result name="error">/Public/error.jsp</result>  
+</global-results>
+```
 # Action方面的精简
 让Action继承自BaseAction即可使用来自BaseAction的方法：
 ## M方法

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+  <!--package和类名一致最好,namespace设置成/类名就可以了，主要用于u方法获取链接，方便管理，加强可读性-->
+	<package name="User" namespace="/User" extends="struts-default">
+    <!--下面两句创建package就要加上，因为success与error方法用了-->
+    <global-results>
+      <result name="input">/Public/success.jsp</result>
+      <result name="error">/Public/error.jsp</result>  
+    </global-results>
+    <!--下面action名称就随便命了，不过推荐以类方法命名。后面class和method就是要调用的Action的方法了。-->
+		<action name="login" class="com.pingjia.action.UserAction" method="login">
+      <!--result就写一个就行了。有特殊需求就多写。如果action方法返回只有error()或success()那就不用写result。-->
+			<result name="success">/User/login.jsp</result>
+		</action>
+		<action name="reg" class="com.pingjia.action.UserAction" method="reg">
+			<result name="success">/User/reg.jsp</result>
+		</action>
+		<action name="checkLogin" class="com.pingjia.action.UserAction" method="checkLogin">
+			<result name="success" type="redirectAction">login</result>
+		</action>
+		<action name="checkReg" class="com.pingjia.action.UserAction" method="checkReg">
+			<result name="success" type="redirectAction">login</result>
+		</action>
+		<action name="logout" class="com.pingjia.action.UserAction" method="logout">
+			<result name="success" type="redirectAction">login</result>
+		</action>
+	</package>
+</struts>
